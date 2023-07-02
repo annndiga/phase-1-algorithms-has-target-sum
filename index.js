@@ -1,5 +1,18 @@
 function hasTargetSum(array, target) {
   // Write your algorithm here
+  const numSet = new Set(); // Create a set to store the numbers seen so far
+
+  for (let num of array) {
+    const complement = target - num; // Calculate the complement for the current number
+
+    if (numSet.has(complement)) {
+      return true; // Found a pair that adds up to the target
+    }
+
+    numSet.add(num); // Add the current number to the set
+  }
+
+  return false; // No pair adds up to the target
 }
 
 /* 
@@ -8,7 +21,14 @@ function hasTargetSum(array, target) {
 
 /* 
   Add your pseudocode here
+1. Create an empty set called numSet.
+2. Iterate through each number (num) in the array.
+   - Calculate the complement by subtracting num from the target.
+   - If the complement exists in numSet, return true (found a pair that adds up to the target).
+   - Add num to numSet.
+3. If no pair adds up to the target, return false.
 */
+
 
 /*
   Add written explanation of your solution here
